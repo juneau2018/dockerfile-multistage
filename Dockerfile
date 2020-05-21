@@ -3,7 +3,7 @@ ADD settings.xml /etc/
 ADD pom.xml /tmp/build/
 WORKDIR /tmp/build
 ADD src /tmp/build/src
-RUN --mount=type=cache,target=/root/.m2  mvn -gs /etc/settings.xml -q -DskipTests=true package
+RUN mvn -gs /etc/settings.xml -q -DskipTests=true package
 
 FROM tomcat:8.5-jdk8
 RUN rm -rf $CATALINA_HOME/webapps/* 
